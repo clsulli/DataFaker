@@ -5,8 +5,8 @@ class Officer:
         self.sex = sex
         self.dob = dob
 
-    def getPrisonerID(self):
-        return self.prisonerID
+    def getOfficerID(self):
+        return self.officerID
 
     def getName(self):
         return self.name

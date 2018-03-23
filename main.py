@@ -20,6 +20,20 @@ def importStreets(filename):
 
     return streets
 
+def importCops(filename):
+    cops = []
+
+    fileO = open(filename, "r")
+    copsF = fileO.readlines()
+
+    for cop in copsF:
+        copLine = cop.split(',')
+        copID, copName, copGender, copDob = copLine[0], copLine[1], copLine[2], copLine[3]
+        currCop = Officer(copID, copName, copGender, copDob)
+        cops.append(currCop)
+
+    return cops
+
 def populateDistrictsWithStreets(streets, dis, blocks, startIdx):
     blocksO = []
 
@@ -54,7 +68,21 @@ def populateDistrictsWithStreets(streets, dis, blocks, startIdx):
 
     blocksO.append(Block(blocks[4], blockStreets5))
 
-    return District(dis, blocksO, 5)
+    return District(dis, blocksO, [])
+
+def populateDistrictWithCops(cops):
+
+    for cop in range(0, len(cops)):
+        if cop >= 0 and cop <= 499:
+            district1.cops.append(cops[cop])
+        elif cop >= 500 and cop <= 999:
+            district2.cops.append(cops[cop])
+        elif cop >= 1000 and cop <= 1499:
+            district3.cops.append(cops[cop])
+        elif cop >= 1500 and cop <= 1999:
+            district4.cops.append(cops[cop])
+        elif cop >= 2000 and cop <= 2499:
+            district5.cops.append(cops[cop])
 
 district1Blocks = ['O-Block','Brick City','Lamron','Lowe','Doggpound']
 district2Blocks = ['Ada Park','1017','WWDC','ABK','GME']
@@ -63,23 +91,18 @@ district4Blocks = ['Pocket','LPC','Sirconn','LOC','Gutta']
 district5Blocks = ['Deathrow','Pax','Low','MTG','KTS']
 
 streets = importStreets("Streets.csv")
+cops = importCops("Cops.csv")
 
 district1 = populateDistrictsWithStreets(streets, 1, district1Blocks, 0)
-district2 = populateDistrictsWithStreets(streets, 2, district1Blocks, 200)
-district3 = populateDistrictsWithStreets(streets, 3, district1Blocks, 400)
-district4 = populateDistrictsWithStreets(streets, 4, district1Blocks, 600)
-district5 = populateDistrictsWithStreets(streets, 5, district1Blocks, 800)
+district2 = populateDistrictsWithStreets(streets, 2, district2Blocks, 200)
+district3 = populateDistrictsWithStreets(streets, 3, district3Blocks, 400)
+district4 = populateDistrictsWithStreets(streets, 4, district4Blocks, 600)
+district5 = populateDistrictsWithStreets(streets, 5, district5Blocks, 800)
+
+populateDistrictWithCops(cops)
 
 print(district1.blocks[0].streets)
-print(district1.blocks[1].streets)
-print(district1.blocks[2].streets)
-print(district1.blocks[3].streets)
-print(district1.blocks[4].streets)
-print("")
-print(district2.blocks[0].streets)
-print(district2.blocks[1].streets)
-print(district2.blocks[2].streets)
-print(district2.blocks[3].streets)
-print(district2.blocks[4].streets)
+print(district1.cops[0].officerID)
+
 
 
