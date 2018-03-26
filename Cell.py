@@ -16,3 +16,6 @@ class Cell:
 
     def getWindow(self):
         return self.window
+
+    def toString(self):
+        return "CELLID: " + str(self.cellID) + "JAILID: " + str(self.jailID) + " LEVEL: " + str(self.priorityLevel) + " WINDOW: " + str(self.window)

@@ -16,3 +16,6 @@ class Officer:
 
     def getDob(self):
         return self.dob
+
+    def toString(self):
+        return " OFFICERID: " + str(self.officerID) + " NAME: " + str(self.name) + " SEX: " + str(self.sex) + " DOB: " + str(self.dob)

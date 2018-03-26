@@ -1,5 +1,5 @@
 class Location:
-    def __init__(self, street, block, district):
+    def __init__(self, district, block, street):
          self.street = street
          self.block = block
          self.district = district
@@ -12,3 +12,6 @@ class Location:
 
     def getDistrict(self):
         return self.district
+
+    def toString(self):
+        return "DISTRICT: " + str(self.district) + " BLOCK: " + str(self.block) + " STREET: " + str(self.street)

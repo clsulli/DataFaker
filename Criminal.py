@@ -16,3 +16,6 @@ class Criminal:
 
     def getDob(self):
         return self.dob
+
+    def toString(self):
+        return "CRIMINAL ID: " + str(self.prisonerID) + " NAME: " + str(self.name) + " SEX: " + str(self.sex) + " DOB: " + str(self.dob)

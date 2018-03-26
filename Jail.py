@@ -16,3 +16,6 @@ class Jail:
 
     def getAddress(self):
         return self.address
+
+    def toString(self):
+        return "JAILID: " + str(self.jailID) + " PHONE: " + str(self.phone) + " NAME: " + str(self.name) + " ADDRESS: " + str(self.address)
